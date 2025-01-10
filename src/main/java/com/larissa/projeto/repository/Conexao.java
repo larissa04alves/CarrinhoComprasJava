@@ -11,7 +11,11 @@ public class Conexao {
 
     public static Connection conectar() throws SQLException {
         try {
+            Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
+        } catch (ClassNotFoundException e) {
+            System.err.println("Driver do PostgreSQL não encontrado: " + e.getMessage());
+            throw new SQLException("Driver do PostgreSQL não encontrado.", e);
         } catch (SQLException e) {
             System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
             throw e;
