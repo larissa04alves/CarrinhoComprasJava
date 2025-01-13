@@ -63,6 +63,7 @@ public class MenuView {
     private void adicionarProdutoAoCarrinho(Scanner scanner) {
         try {
             System.out.print("* Adicionar produtos ao seu carrinho *\n");
+            listarProdutosNoEstoque();
             System.out.print("Digite o ID do produto: ");
             int produtoId = Integer.parseInt(scanner.nextLine());
 

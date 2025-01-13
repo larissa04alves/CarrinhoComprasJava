@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CarrinhoRepository {
 
-    // Método para adicionar um produto ao carrinho
+    //Método para adicionar um produto ao carrinho
     public void adicionarAoCarrinho(Carrinho carrinho) throws SQLException {
         String sql = "INSERT INTO carrinho (nome, categoria, valor, quantidade, valor_total) VALUES (?, ?, ?, ?, ?)";
         try (Connection conectar = Conexao.conectar(); PreparedStatement stmt = conectar.prepareStatement(sql)) {

@@ -16,6 +16,7 @@ public class Produto {
         this.categoria = categoria;
     }
 
+    // Getters e Setters
     public int getId() {
         return id;
     }

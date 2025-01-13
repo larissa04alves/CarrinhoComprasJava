@@ -11,6 +11,7 @@ public class CarrinhoController {
     private final CarrinhoRepository carrinhoRepository = new CarrinhoRepository();
     private final EstoqueController estoqueService = new EstoqueController();
 
+
     public void adicionarProdutoCarrinho(int produtoId, int quantidade) throws SQLException {
         if (!estoqueService.verificarEstoque(produtoId, quantidade)) {
             throw new IllegalArgumentException("Estoque insuficiente para o produto ID: " + produtoId);

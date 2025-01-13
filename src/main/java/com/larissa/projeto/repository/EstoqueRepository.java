@@ -11,7 +11,7 @@ import java.util.List;
 
 public class EstoqueRepository {
 
-    //Adiciona um produto ao estoque
+    //Método para adicionar um produto ao estoque
     public void adicionarProduto(Produto produto) throws SQLException {
         String sql = "INSERT INTO estoque (nome, valor, quantidade, categoria) VALUES (?, ?, ?, ?)";
         try (Connection conectar = Conexao.conectar(); PreparedStatement stmt = conectar.prepareStatement(sql)) {
@@ -23,7 +23,7 @@ public class EstoqueRepository {
         }
     }
 
-    //Lista todos os produtos do estoque
+    //Método para listar os produtos do estoque
     public List<Produto> listarProdutos() throws SQLException {
         String sql = "SELECT * FROM estoque";
         List<Produto> produtos = new ArrayList<>();
@@ -42,7 +42,7 @@ public class EstoqueRepository {
         return produtos;
     }
 
-    //Atualiza a quantidade de um produto no estoque
+    //Método para atualizar a quantidade de um produto no estoque
     public void atualizarQuantidade(int id, int novaquantidade) throws SQLException {
         String sql = "UPDATE estoque SET quantidade = ? WHERE id = ?";
         try (Connection conectar = Conexao.conectar(); PreparedStatement stmt = conectar.prepareStatement(sql)) {
@@ -52,7 +52,7 @@ public class EstoqueRepository {
         }
     }
 
-    //Remove um produto do estoque
+    //Método para remover um produto do estoque
     public void removerProduto(int id) throws SQLException {
         String sql = "DELETE FROM estoque WHERE id = ?";
         try (Connection conectar = Conexao.conectar(); PreparedStatement stmt = conectar.prepareStatement(sql)) {

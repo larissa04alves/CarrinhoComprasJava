@@ -5,20 +5,25 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Conexao {
+
     private static final String URL = "jdbc:postgresql://localhost:5432/carrinho_db";
     private static final String USERNAME = "admin";
     private static final String PASSWORD = "postgres";
 
+    /**
+     * Estabelece uma conexão com o banco de dados PostgreSQL.
+     *
+     * @return Objeto Connection para interagir com o banco de dados.
+     * @throws SQLException Caso ocorra um erro ao tentar conectar.
+     */
     public static Connection conectar() throws SQLException {
         try {
             Class.forName("org.postgresql.Driver");
             return DriverManager.getConnection(URL, USERNAME, PASSWORD);
         } catch (ClassNotFoundException e) {
-            System.err.println("Driver do PostgreSQL não encontrado: " + e.getMessage());
-            throw new SQLException("Driver do PostgreSQL não encontrado.", e);
+            throw new SQLException("Driver do PostgreSQL não encontrado. Verifique se a dependência está configurada.", e);
         } catch (SQLException e) {
-            System.err.println("Erro ao conectar ao banco de dados: " + e.getMessage());
-            throw e;
+            throw new SQLException("Erro ao conectar ao banco de dados. Verifique as credenciais e URL.", e);
         }
     }
 }
